@@ -58,3 +58,8 @@ actionlint .github/workflows/workflow-error.yml
 8 |     run-on: ubuntu-latest
   |     ^~~~~~~
 ```
+
+## ベストプラクティス
+
+- # GitHub Actions のワークフローは常に **ダブルクォート** を用いるべき
+  - `- run: echo "ACTOR - ${{ github.actor }}"`
