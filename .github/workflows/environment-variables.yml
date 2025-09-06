@@ -1,0 +1,17 @@
+name: Environment variables
+
+on: push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    # env:
+    #   BRANCH: main # ワークフロー全体で利用可能
+    steps:
+      #   - run: echo "${BRANCH}" # ブランチ名をハードコードすべきではない
+      - run: echo "Branch is ${{ github.ref }}"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }} # githubコンテキストで動的にブランチ名を参照すべき
+        #   ref: ${{ env.BRANCH }} # envコンテキスト経由でジョブレベル環境変数を利用
+# P38 Code 3.2
