@@ -68,6 +68,7 @@ actionlint .github/workflows/workflow-error.yml
   - デフォルト環境変数の使用は避ける
 - GitHub コンテキストを直接シェルコマンドへ埋め込んではいけない
   - 環境変数を用いてコンテキストをクォートすること
+- アクションバージョンを **コミット SHA** に固定する
 
 ```yml
 # Bad Code
@@ -87,3 +88,14 @@ env:
 steps:
   - run: echo "${ACTOR}" # envコンテキストを参照
 ```
+
+## ツール
+
+- GitHub Actions ワークフローを TypeScript で記述
+  [ghat](https://github.com/koki-develop/ghats)
+- ワークフローのバージョンをコミット SHA に置換
+  [pinact](https://github.com/suzuki-shunsuke/pinact)
+- ワークフロー構文チェック
+  [actionlint](https://github.com/rhysd/actionlint)
+- ワークフローセキュリティチェック
+  [ghalint](https://github.com/suzuki-shunsuke/ghalint/tree/main?tab=readme-ov-file#policies)
