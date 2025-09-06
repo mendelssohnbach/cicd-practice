@@ -1,12 +1,12 @@
-name: Schedule
+# name: Schedule
 
-on:
-  schedule:
-    - cron: '*/15 * * * *'
+# on:
+#   schedule:
+#     - cron: '*/15 * * * *'
 
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - run: date
+# jobs:
+#   run:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: date
 # P26 Code2.5
