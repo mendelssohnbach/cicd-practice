@@ -1,0 +1,15 @@
+name: RunnerContext
+
+on: push
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Name ${{ runner.name }}" # ランナー名
+      - run: echo "OS ${{ runner.os }}" # OS
+      - run: echo "ARCH ${{ runner.arch }}" # アーキテクチャ
+      - run: echo "TEMP ${{ runner.temp }}" # 一時ディレクトリ
+      - run: echo "TOOL ${{ runner.tool_cache}}" # ツールキャッシュディレクトリ
+      - run: echo "DEBUG ${{ runner.debug }}" # デバッグモード
+# P37 3.1. runnerコンテキスト
