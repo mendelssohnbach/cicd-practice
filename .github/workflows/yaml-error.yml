@@ -1,0 +1,11 @@
+name: YAML error
+
+on: push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      #   steps: # インデントが2文字ズレている！
+      - run: echo "YAML Syntax Error"
+# P21 Code2.3
