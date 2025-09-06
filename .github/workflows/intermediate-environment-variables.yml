@@ -6,7 +6,7 @@ jobs:
   print:
     runs-on: ubuntu-latest
     env:
-      ACTOR: ${{ github.actor }} # コンテキストの値を環境変数に代入
+      ACTOR: 'ACTOR - ${{ github.actor }}' # コンテキストの値を環境変数に代入
     steps:
       - run: echo "${ACTOR}" # envコンテキストを参照
 # P40 Code 3.4
