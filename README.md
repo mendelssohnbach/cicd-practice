@@ -7,3 +7,54 @@ I will learn from the book "GitHub CI/CD Practical Guide."
 [GitHub CI/CD 実践ガイド](https://gihyo.jp/book/2024/978-4-297-14173-8)
 
 [サンプルコード](https://github.com/tmknom/example-github-cicd)
+
+## act
+
+[act](https://github.com/nektos/act)
+
+```workflow-error.yml
+name: Workflow error
+
+on: push
+
+jobs:
+  run:
+    run-on: ubuntu-latest # 正しくは runs-on
+    steps:
+      - run: date
+```
+
+```terminal
+$ act -j run -W .github/workflows/workflow-error.yml
+INFO[0000] Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock'
+Error: workflow is not valid. 'workflow-error.yml': Line: 8 Column 5: Failed to match job-factory: Line: 8 Column 5: Unknown Property run-on
+Line: 8 Column 5: Failed to match workflow-job: Line: 8 Column 5: Unknown Property run-on
+Line: 9 Column 5: Unknown Property steps
+Actions YAML Schema Validation Error detected:
+For more information, see: https://nektosact.com/usage/schema.html
+```
+
+```terminal
+act --help
+
+Usage:
+  act [event name to run] [flags]
+-j, --job string
+--workflows'/'-W' flag
+```
+
+## actionlint
+
+[actionlint](https://github.com/rhysd/actionlint)
+
+```terminal
+actionlint .github/workflows/workflow-error.yml
+.github/workflows/workflow-error.yml:6:3: "runs-on" section is missing in job "run" [syntax-check]
+  |
+6 |   run:
+  |   ^~~~
+.github/workflows/workflow-error.yml:8:5: unexpected key "run-on" for "job" section. expected one of "concurrency", "container", "continue-on-error", "defaults", "env", "environment", "if", "name", "needs", "outputs", "permissions", "runs-on", "secrets", "services", "steps", "strategy", "timeout-minutes", "uses", "with" [syntax-check]
+  |
+8 |     run-on: ubuntu-latest
+  |     ^~~~~~~
+```
