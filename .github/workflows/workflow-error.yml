@@ -1,0 +1,11 @@
+name: Workflow error
+
+on: push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    # run-on: ubuntu-latest
+    steps:
+      - run: date
+# P20 Code2.2
