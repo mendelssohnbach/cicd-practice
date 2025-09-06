@@ -66,6 +66,8 @@ actionlint .github/workflows/workflow-error.yml
 - ハードコードされたブランチはセキュリティリスクがあるため使用しない
 - GitHub コンテキストを使うこと
   - デフォルト環境変数の使用は避ける
+- GitHub コンテキストを直接シェルコマンドへ埋め込んではいけない
+  - 環境変数を用いてコンテキストをクォートすること
 
 ```yml
 # Bad Code
@@ -76,4 +78,12 @@ env:
 ```yml
 # Best Practice
 - run: echo "${{ github.actor }}" # githubコンテキストの参照
+```
+
+```yml
+# Best Practice
+env:
+  ACTOR: ${{ github.actor }} # コンテキストの値を環境変数に代入
+steps:
+  - run: echo "${ACTOR}" # envコンテキストを参照
 ```
