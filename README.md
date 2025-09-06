@@ -63,3 +63,10 @@ actionlint .github/workflows/workflow-error.yml
 
 - GitHub Actions のワークフローは常に **ダブルクォート** を用いるべき
   - `- run: echo "ACTOR - ${{ github.actor }}"`
+- ハードコードされたブランチはセキュリティリスクがあるため使用しない
+
+```yml
+# Bad Code
+env:
+  BRANCH: main # ハードコードされたブランチはセキュリティリスクがあるため使用しない
+```
