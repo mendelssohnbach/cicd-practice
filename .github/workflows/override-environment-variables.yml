@@ -9,8 +9,8 @@ jobs:
   print:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Workflow level - "{ EXAMPLE }"
+      - run: echo Workflow level - "${ EXAMPLE }"
       - env:
           EXAMPLE: Defined by step level
-        run: echo Overrode level - "{ EXAMPLE }"
+        run: echo Overrode level - "${ EXAMPLE }"
 # P39 Code 3.3
