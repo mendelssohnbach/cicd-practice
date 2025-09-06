@@ -1,0 +1,17 @@
+name: ContextInfo
+
+on: push
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ACTOR - ${{ github.actor }}" # githubコンテキストの参照
+      - run: echo "RUN ID - ${{ github.run_id }}" # ワークフロー実行ID
+      # - run: 'echo SOURCE BRANCH - ${{ github.head_ref }}' # プルリクエストのソースブランチ(プルリクエスト時のみ有効)
+      - run: echo "REPO NAME - ${{ github.repository }}" # リポジトリ名
+      - run: echo "REPO OWNER - ${{ github.repository_owner }}" # リポジトリオーナー名
+      - run: echo "EVENT NAME - ${{ github.event_name }}" # トリガーイベント
+      - run: echo "EVENT JSON - ${{ toJson(github.event) }}" # トリガーイベントのJSON
+# GitHub Actionsのワークフローは常に **ダブルクォート** を用いるべき
+# P36 3.1.1 githubコンテキスト
