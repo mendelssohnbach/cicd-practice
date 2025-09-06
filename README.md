@@ -69,6 +69,7 @@ actionlint .github/workflows/workflow-error.yml
 - GitHub コンテキストを直接シェルコマンドへ埋め込んではいけない
   - 環境変数を用いてコンテキストをクォートすること
 - アクションバージョンを **コミット SHA** に固定する
+- **Secrets** をログ出力してはならない
 
 ```yml
 # Bad Code
