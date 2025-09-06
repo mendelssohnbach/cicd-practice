@@ -89,6 +89,15 @@ steps:
   - run: echo "${ACTOR}" # envコンテキストを参照
 ```
 
+## CLI
+
+**GitHub CLI** コマンドの使い方
+
+```terminal
+# `Secrets` の登録
+$ gh secret se PASSWORD --body 'ILoveSecrets!'
+```
+
 ## ツール
 
 - GitHub Actions ワークフローを TypeScript で記述
