@@ -13,5 +13,5 @@ jobs:
   run:
     runs-on: Ubuntu-latest
     steps:
-      - run: echo "{{ inputs.greeting }}"
+      - run: echo "${{ inputs.greeting }}"
 # P24 Code2.4
