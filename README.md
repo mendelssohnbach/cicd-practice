@@ -61,5 +61,5 @@ actionlint .github/workflows/workflow-error.yml
 
 ## ベストプラクティス
 
-- # GitHub Actions のワークフローは常に **ダブルクォート** を用いるべき
+- GitHub Actions のワークフローは常に **ダブルクォート** を用いるべき
   - `- run: echo "ACTOR - ${{ github.actor }}"`
