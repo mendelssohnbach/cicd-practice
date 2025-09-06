@@ -1,0 +1,17 @@
+name: Manual
+
+on:
+  workflow_dispatch: # 手動トリガー
+    inputs:
+      greeting:
+        type: string
+        default: Hello
+        required: true
+        description: A Cheerful word
+
+jobs:
+  run:
+    runs-on: Ubuntu-latest
+    steps:
+      - run: echo "{{ inputs.greeting }}"
+# P24 Code2.4
