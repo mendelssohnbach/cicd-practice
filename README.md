@@ -72,6 +72,9 @@ actionlint .github/workflows/workflow-error.yml
 - **Secrets** をログ出力してはならない
 - わかりやすいワークフロー実行名/ジョブ名/ステップ名を付与する
   - `run-name` でワークフロー実行名指定する
+- `permission` ジョブを宣言した後、 `timeout-minutes` ジョブを宣言する
+- 簡単なワークフローの `permissions` は `{}` を用いる
+- 各ステップは `- name` レベルキー内のブロック内に配置する
 
 ```yml
 # Bad Code
@@ -108,6 +111,34 @@ jobs:
     steps:
       - name: Amazing Script #ステップ名の指定
         run: echo "Hello Naming"
+```
+
+```yam
+# Best Practice
+name: GITHUB_OUTPUT
+run-name: GITHUB_OUTPUT sample
+
+on: push
+
+# `permissions` ジョブを先頭で宣言し、
+# 続いて `timeout-minutes` ジョブを宣言する
+# `- name` レベルキーをトップに宣言し、各ステップをブロックに配置する
+jobs:
+  share:
+    permissions: {}
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize Workflow
+        run: echo "STEP1 is running."
+      - name: Generate Output Value
+        id: source # ステップIDを設定
+
+        run: echo "result=Hello" >> "${GITHUB_OUTPUT}" # `GITHUB_OUTPUT` へ書き込み
+      - name: Use Output Value
+        env:
+          RESULT: ${{ steps.source.outputs.result }} # stepsコンテキストを参照
+        run: echo "${RESULT}" # 参照値を出力
 ```
 
 ## CLI

@@ -9,15 +9,18 @@ on: push
 
 jobs:
   share:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
     permissions: {}
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
     steps:
-      - name: STEP1
+      - name: Initialize Workflow
         run: echo "STEP1 is running."
-      - id: source # ステップIDを設定
+      - name: Generate Output Value
+        id: source # ステップIDを設定
+
         run: echo "result=Hello" >> "${GITHUB_OUTPUT}" # `GITHUB_OUTPUT` へ書き込み
-      - env:
+      - name: Use Output Value
+        env:
           RESULT: ${{ steps.source.outputs.result }} # stepsコンテキストを参照
         run: echo "${RESULT}" # 参照値を出力
 # P54 Code 3.18
