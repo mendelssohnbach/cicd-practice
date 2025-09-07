@@ -1,0 +1,14 @@
+name: Conditions
+
+on: push
+
+jobs:
+  skip-or-run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # 読み取り権限に限定
+    timeout-minutes: 5 # ジョブタイムアウト時間を指定
+    steps:
+      - run: echo "Hello conditions"
+        if: "${{ contains(github.run_id, '1')}}" # ワークフロー実行IDで分岐
+# P50 Code 3.12
