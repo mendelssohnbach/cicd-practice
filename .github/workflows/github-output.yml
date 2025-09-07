@@ -1,0 +1,23 @@
+# ステップ間のデータ共有
+# GITHUB_OUTPUT 関数
+# 特殊なファイルパスが格納されている
+
+name: GITHUB_OUTPUT
+run-name: GITHUB_OUTPUT sample
+
+on: push
+
+jobs:
+  share:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: STEP1
+        run: echo "STEP1 is running."
+      - id: source # ステップIDを設定
+        run: echo "result=Hello" >> "${GITHUB_OUTPUT}" # `GITHUB_OUTPUT` へ書き込み
+      - env:
+          RESULT: ${{ steps.source.outputs.result }} # stepsコンテキストを参照
+        run: echo "${RESULT}" # 参照値を出力
+# P54 Code 3.18
