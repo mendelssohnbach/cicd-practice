@@ -1,0 +1,15 @@
+name: Naming # ワークフロー名の指定
+
+on: push
+
+jobs:
+  print:
+    name: Super Useful Job # ジョブ名の指定
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - name: Amazing Script #ステップ名の指定
+        run: echo "Hello Naming"
+# P52 Code 3.15
