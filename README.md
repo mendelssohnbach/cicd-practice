@@ -71,6 +71,7 @@ actionlint .github/workflows/workflow-error.yml
 - アクションバージョンを **コミット SHA** に固定する
 - **Secrets** をログ出力してはならない
 - わかりやすいワークフロー実行名/ジョブ名/ステップ名を付与する
+  - `run-name` でワークフロー実行名指定する
 
 ```yml
 # Bad Code
