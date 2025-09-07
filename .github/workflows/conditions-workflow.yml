@@ -1,0 +1,15 @@
+name: Conditions workflow
+
+on: push
+
+jobs:
+  skip-or-run:
+    # 最初の `job` 条件に合致しない場合はワークフローがスキップされる
+    if: "${{ github.actor == 'octocat'}}" # `octocat` アカウントの場合に実行
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - run: echo "Non Skip this job!"
+# P52 Code 3.14
