@@ -109,3 +109,20 @@ $ gh secret se PASSWORD --body 'ILoveSecrets!'
   [actionlint](https://github.com/rhysd/actionlint)
 - ワークフローセキュリティチェック
   [ghalint](https://github.com/suzuki-shunsuke/ghalint/tree/main?tab=readme-ov-file#policies)
+
+### ツールの利用
+
+```terminal
+$ actionlint
+$ ghalint act
+$ ghalint run
+$ pinact run .github/workflows/TARGET_FAIL
+$ act -j JOBS_NAME -W .github/workflows/TARGET_FAIL
+```
+
+```terminal
+# セキュリティやベストプラクティスに準拠しているかチェック
+$ ghalint run
+# 記述内容のチェック
+$ ghalint act
+```
