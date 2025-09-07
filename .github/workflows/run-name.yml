@@ -1,0 +1,18 @@
+name: Run name
+
+# `run-name` キーはコンテキストの利用が可能、ログに反映される
+run-name: Run by "`${{ github.actor }}" # ワークフロー実行名の指定
+
+on: push
+
+jobs:
+  print:
+    name: ECHO GREETING # ジョブ名の指定
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - name: SAY HELLO #ステップ名の指定
+        run: echo "Hello"
+# P53 Code 3.16
