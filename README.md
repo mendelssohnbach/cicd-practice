@@ -70,6 +70,7 @@ actionlint .github/workflows/workflow-error.yml
   - 環境変数を用いてコンテキストをクォートすること
 - アクションバージョンを **コミット SHA** に固定する
 - **Secrets** をログ出力してはならない
+- わかりやすいワークフロー実行名/ジョブ名/ステップ名を付与する
 
 ```yml
 # Bad Code
@@ -88,6 +89,24 @@ env:
   ACTOR: ${{ github.actor }} # コンテキストの値を環境変数に代入
 steps:
   - run: echo "${ACTOR}" # envコンテキストを参照
+```
+
+```yml
+# Best Practice
+name: Naming # ワークフロー名の指定
+
+on: push
+
+jobs:
+  print:
+    name: Super Useful Job # ジョブ名の指定
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - name: Amazing Script #ステップ名の指定
+        run: echo "Hello Naming"
 ```
 
 ## CLI
@@ -117,6 +136,7 @@ $ actionlint
 $ ghalint act
 $ ghalint run
 $ pinact run .github/workflows/TARGET_FAIL
+$ act --validate
 $ act -j JOBS_NAME -W .github/workflows/TARGET_FAIL
 ```
 
