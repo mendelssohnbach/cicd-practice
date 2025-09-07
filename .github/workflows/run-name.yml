@@ -1,7 +1,7 @@
 name: Run name
 
 # `run-name` キーはコンテキストの利用が可能、ログに反映される
-run-name: Run by "`${{ github.actor }}" # ワークフロー実行名の指定
+run-name: Run by "${{ github.actor }}" # ワークフロー実行名の指定
 
 on: push
 
