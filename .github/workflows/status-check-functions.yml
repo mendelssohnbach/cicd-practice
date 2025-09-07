@@ -1,0 +1,15 @@
+name: Status check functions
+
+on: push
+
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    steps:
+      - run: exit 1 # 常に失敗させる
+      - run: echo "Hello"
+        if: "${{ failure() }}" # 直前のステップが失敗した場合に実行
+# P51 Code 3.13
