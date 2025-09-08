@@ -72,9 +72,13 @@ actionlint .github/workflows/workflow-error.yml
 - **Secrets** をログ出力してはならない
 - わかりやすいワークフロー実行名/ジョブ名/ステップ名を付与する
   - `run-name` でワークフロー実行名指定する
-- `permission` ジョブを宣言した後、 `timeout-minutes` ジョブを宣言する
+- `permissions` ジョブを宣言した後、 `timeout-minutes` ジョブを宣言する
+  　- 複数の `permissions` が必要な場合は、ジョブを分割する
 - 簡単なワークフローの `permissions` は `{}` を用いる
 - 各ステップは `- name` レベルキー内のブロック内に配置する
+- `GITHUB_OUTPUT` 環境変数を積極的に使う
+  - 可読性が高い: ステップ ID を利用するから
+  - `GITHUB_ENV` 環境変数はグローバル変数扱いなので、使用を避ける
 
 ```yml
 # Bad Code
@@ -139,6 +143,29 @@ jobs:
         env:
           RESULT: ${{ steps.source.outputs.result }} # stepsコンテキストを参照
         run: echo "${RESULT}" # 参照値を出力
+```
+
+```yml
+# ジョブ分割の例
+jobs:
+  read-only-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Do something with code
+
+  read-write-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: read-only-job # 依存関係を設定
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Commit and push changes
 ```
 
 ## CLI
