@@ -177,6 +177,19 @@ jobs:
 - 終了時自動で破棄される
 - 取得方法 `${{ secrets.GITHUB_TOKEN }}`
 
+**アクティビティタイプ** に挙動
+
+- `types` キーで指定する
+  - 省略時は全アクティビティを指定すると解釈される
+- プルリクエストのみ省略時の解釈がことなる
+- `types: [opened, synchronize, reopened]` と解釈される
+
+```yml
+on:
+  issues: # Issue イベント
+    types: [opened, edited] # 作成時と編集時のみ
+```
+
 ## CLI
 
 **GitHub CLI** コマンドの使い方
