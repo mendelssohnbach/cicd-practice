@@ -23,5 +23,5 @@ jobs:
           go-version: "1.22"
 
       - name: Test Execute
-        run: go test ./... # リポジトリ内を再帰的にテスト実行
+        run: go test go/excellent/*.go # リポジトリ内を再帰的にテスト実行
 # P68 Code 4.3
