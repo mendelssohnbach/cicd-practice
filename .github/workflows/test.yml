@@ -1,0 +1,27 @@
+name: Test
+run-name: Go lang Testing
+
+on:
+  pull_request:
+    paths: ["go/**/*.go"]
+
+jobs:
+  test:
+    permissions:
+      contents: read
+
+    timeout-minutes: 3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+
+      - name: Go Lang Setup
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+        with:
+          go-version: "1.22"
+
+      - name: Test Execute
+        run: go test ./... # リポジトリ内を再帰的にテスト実行
+# P68 Code 4.3
