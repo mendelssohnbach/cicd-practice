@@ -79,6 +79,7 @@ actionlint .github/workflows/workflow-error.yml
 - `GITHUB_OUTPUT` 環境変数を積極的に使う
   - 可読性が高い: ステップ ID を利用するから
   - `GITHUB_ENV` 環境変数はグローバル変数扱いなので、使用を避ける
+- `read-all` と `write-all` の一括指定はトラブルシューティング以外では使わない
 
 ```yml
 # Bad Code
@@ -167,6 +168,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Commit and push changes
 ```
+
+## Tips
+
+**GITHUB_TOKEN** の特徴
+
+- ワークフロー開始時に自動生成される
+- 終了時自動で破棄される
+- 取得方法 `${{ secrets.GITHUB_TOKEN }}`
 
 ## CLI
 
