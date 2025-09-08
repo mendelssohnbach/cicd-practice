@@ -1,0 +1,21 @@
+# ステップ間のデータ共有
+# GITHUB_ENV 関数
+# 特殊なファイルパスが格納されている
+
+name: GITHUB_ENV
+run-name: GITHUB_ENV data share sample
+
+on: push
+
+jobs:
+  share:
+    permissions: {}
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Export Environment Value
+        run: echo "RESULT=hello" >> "${GITHUB_ENV}"
+
+      - name: Use Environment Value
+        run: echo "${RESULT}"
+# P55 Code 3.19
