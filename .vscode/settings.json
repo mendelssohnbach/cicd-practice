@@ -179,28 +179,5 @@
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "eslint.nodePath": "./node_modules/eslint",
-  "terminal.integrated.defaultProfile.linux": "bash",
-  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
-    {
-      "text": "必ず日本語で簡潔に記述してください"
-    },
-    {
-      "text": "プルリクエストの本文は、変更内容の詳細を記述してください"
-    }
-  ],
-  "github.copilot.chat.commitMessageGeneration.instructions": [
-    {
-      "text": "必ず日本語で記述してください"
-    },
-    {
-      "text": "コミットメッセージは、最初にConventional Commitsに則って記述してください"
-    },
-    {
-      "text": "その後ファイルごとの詳細な変更内容を記述してください"
-    }
-  ],
-  "github.copilot.chat.agent.thinkingTool": true,
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "github.copilot.chat.localeOverride": "ja",
-  "chat.agent.maxRequests": 200
+  "terminal.integrated.defaultProfile.linux": "bash"
 }

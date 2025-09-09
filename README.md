@@ -209,6 +209,8 @@ $ gh secret se PASSWORD --body 'ILoveSecrets!'
   [actionlint](https://github.com/rhysd/actionlint)
 - ワークフローセキュリティチェック
   [ghalint](https://github.com/suzuki-shunsuke/ghalint/tree/main?tab=readme-ov-file#policies)
+- ワークフローセキュリティチェック
+  [zizmor](https://github.com/zizmorcore/zizmor)
 
 ### ツールの利用
 
@@ -216,6 +218,7 @@ $ gh secret se PASSWORD --body 'ILoveSecrets!'
 $ actionlint
 $ ghalint act
 $ ghalint run
+$ zizmor .github/workflows/TARGET_FAIL
 $ pinact run .github/workflows/TARGET_FAIL
 $ act --validate
 $ act -j JOBS_NAME -W .github/workflows/TARGET_FAIL
