@@ -1,0 +1,25 @@
+name: Change shell
+run-name: Bash shell -> python shell
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 3
+
+    steps:
+      - name: Run Bash
+        shell: bash
+        run: echo "${SHELL}"
+
+      - name: Run python
+        shell: python
+        run: |
+          import os
+          print(os.environ['PATH'])
+
+# P79 Code 4.8
