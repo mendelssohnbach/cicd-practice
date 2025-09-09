@@ -1,0 +1,24 @@
+# プルリクエストトリガーは最新コード以外の実行は行わない
+name: Auto cancel
+run-name: "{{ github.actor }}"
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  pull-requests: read
+
+concurrency:
+  group: "${{ github.workflow}}-${{ github.ref }}"
+  cancel-in-progress: true # 同一グループのワークフローが実行中ならキャンセル
+
+jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Sleep 120 seconds
+        run: sleep 120
+# P82 Code 4.10
