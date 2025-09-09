@@ -1,0 +1,25 @@
+# ワークフローの多重起動を抑止
+
+name: Concurrency
+run-name: concurrency out
+
+on:
+  workflow_dispatch:
+  push:
+
+defaults:
+  run:
+    shell: bash
+
+concurrency: "${{ github.workflow }}" # ワークフロー名を指定
+
+jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 3
+
+    steps:
+      - name: sleep 120 seconds
+        run: sleep 120
+# P81 Code 4.9
