@@ -31,6 +31,6 @@ jobs:
 
       - name: Execute actionlint container
         run: | # 静的解析の実行
-          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:latest
+          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:v1.6.24
 
 # P77 Code 4.6
