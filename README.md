@@ -80,6 +80,7 @@ actionlint .github/workflows/workflow-error.yml
   - 可読性が高い: ステップ ID を利用するから
   - `GITHUB_ENV` 環境変数はグローバル変数扱いなので、使用を避ける
 - `read-all` と `write-all` の一括指定はトラブルシューティング以外では使わない
+- タイムアウトを必ず設定する `tiemout-minites: 5`
 
 ```yml
 # Bad Code
