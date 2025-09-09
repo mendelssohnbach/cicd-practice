@@ -172,6 +172,89 @@ jobs:
 
 ## Tips
 
+**run-name** の利用例
+
+[github コンテキスト](https://docs.github.com/ja/actions/reference/workflows-and-actions/contexts#github-context)
+
+- 一般的なビルドとデプロイ
+  - 実行者の名前とブランチ名、実行番号を含める
+- プルリクエストのテスト
+  - PR 番号やブランチ名、コミット SHA を含める
+- リリース用ビルド
+  - タグ名やリリースバージョンを含める
+- スケジュール実行
+  - 日付と時刻を含める
+- 手動実行
+  - `dispatch` で入力された情報を表示する
+
+```yml
+# 一般的なビルドとデプロイ
+name: Main Build & Deploy
+run-name: '📦 Build & Deploy by @${{ github.actor }} on ${{ github.ref_name }} (#${{ github.run_number }})'
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs: ...
+```
+
+```yml
+# プルリクエストのテスト
+name: PR Test & Lint
+run-name: '🧪 PR #${{ github.event.pull_request.number }} by @${{ github.actor }} on ${{ github.head_ref }}'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs: ...
+```
+
+```yml
+# リリース用ビルド
+name: Release Build
+run-name: '🚀 Release Build: ${{ github.ref_name }}'
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs: ...
+```
+
+```yml
+# スケジュール実行
+name: Nightly Backup
+run-name: "💾 Nightly Backup - ${{ format('{0}', github.event.repository.name) }}"
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs: ...
+```
+
+```yml
+# 手動実行
+name: Manual Deploy
+run-name: '🚀 Deploy to ${{ github.event.inputs.environment }} by @${{ github.actor }}'
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+
+jobs: ...
+```
+
 **GITHUB_TOKEN** の特徴
 
 - ワークフロー開始時に自動生成される
