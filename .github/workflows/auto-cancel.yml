@@ -1,6 +1,6 @@
 # プルリクエストトリガーは最新コード以外の実行は行わない
 name: Auto cancel
-run-name: "{{ github.actor }}"
+run-name: ${{ github.actor }}
 
 on:
   workflow_dispatch:
