@@ -191,6 +191,20 @@ on:
     types: [opened, edited] # 作成時と編集時のみ
 ```
 
+`shell` キーの有無で起動オプションが変わる  
+パイプエラーを拾うために `shell: bash` と記述する
+
+```yml
+defaults:
+  run:
+    shell: bash # ワークフローレベルで指定
+```
+
+```terminal
+// 記述結果の起動オプション
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+```
+
 ## CLI
 
 **GitHub CLI** コマンドの使い方
