@@ -1,0 +1,17 @@
+# 2分スリープを行おうとするが1分でタイムアウトする
+
+name: Timeout
+run-name: Sleep and Timeout
+
+on: push
+
+jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 1
+
+    steps:
+      - name: few seconds
+        run: sleep 120
+# P78 Code 4.7
