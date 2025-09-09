@@ -1,0 +1,16 @@
+name: Workflow Dispatch
+run-name: Workflow dispatch
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    permissions: {}
+    timeout-minutes: 3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo Hello
+        run: "echo Hello"
