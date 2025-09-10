@@ -8,6 +8,14 @@ I will learn from the book "GitHub CI/CD Practical Guide."
 
 [サンプルコード](https://github.com/tmknom/example-github-cicd)
 
+## 黄金率
+
+- クリーンに保つ
+- 高速に実行する
+- ノイズを減らす
+- ワークフローの基本形
+  - チェックアウト/言語セットアップ/テスト実行
+
 ## act
 
 [act](https://github.com/nektos/act)
