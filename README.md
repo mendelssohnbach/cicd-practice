@@ -320,8 +320,13 @@ $ gh secret se PASSWORD --body 'ILoveSecrets!'
 - `permissions` を自動的に更新
   [actions-permission](https://github.com/pkgdeps/update-github-actions-permissions)
 - 依存関係の自動更新
+  [Dependabot](https://docs.github.com/ja/code-security/dependabot/working-with-dependabot)
+  [Dependabot: 使い方](https://zenn.dev/coconala/articles/1bf6256bf11ec2)
   [Renovate](https://github.com/renovatebot/renovate)
-  [使い方](https://zenn.dev/book000/articles/renovate-dep-auto-update)
+  [Renovate: 使い方](https://zenn.dev/book000/articles/renovate-dep-auto-update)
+- 自動更新遅延ツール
+  [cooldown](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#cooldown-)
+  [cooldown: 使い方](https://tech.dentsusoken.com/entry/dependabot_cooldown)
 
 ### ツールの利用
 
