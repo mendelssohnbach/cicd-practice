@@ -317,6 +317,11 @@ $ gh secret se PASSWORD --body 'ILoveSecrets!'
   [ghalint](https://github.com/suzuki-shunsuke/ghalint/tree/main?tab=readme-ov-file#policies)
 - ワークフローセキュリティチェック
   [zizmor](https://github.com/zizmorcore/zizmor)
+- `permissions` を自動的に更新
+  [actions-permission](https://github.com/pkgdeps/update-github-actions-permissions)
+- 依存関係の自動更新
+  [Renovate](https://github.com/renovatebot/renovate)
+  [使い方](https://zenn.dev/book000/articles/renovate-dep-auto-update)
 
 ### ツールの利用
 
@@ -328,6 +333,7 @@ $ zizmor .github/workflows/TARGET_FAIL
 $ pinact run .github/workflows/TARGET_FAIL
 $ act --validate
 $ act -j JOBS_NAME -W .github/workflows/TARGET_FAIL
+$ npx @pkgdeps/update-github-actions-permissions ".github/workflows/*.{yaml,yml}"
 ```
 
 ```terminal
